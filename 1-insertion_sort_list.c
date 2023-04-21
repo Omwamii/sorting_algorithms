@@ -4,7 +4,7 @@
  *  insertion_sort_list - sort list using insertion sort
  *  @list: ptr to list
  */
- void insertion_sort_list(listint_t **list)
+void insertion_sort_list(listint_t **list)
 {
 	listint_t *next, *curr, *prev;
 
@@ -16,7 +16,7 @@
 	{
 		prev = curr->prev;
 		next = curr->next;
-		if (prev && curr->n < prev->n )
+		if (prev && curr->n < prev->n)
 		{
 			if (prev->prev == NULL)
 				*list = curr;
