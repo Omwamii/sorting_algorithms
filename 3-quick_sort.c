@@ -6,7 +6,7 @@ int partition(int *array, int low, int high, size_t size);
 
 /**
  * quick_sort - sorts array using quicksort
- * @array - array to sort
+ * @array: array to sort
  * @size: size of array
  */
 void quick_sort(int *array, size_t size)
@@ -18,13 +18,15 @@ void quick_sort(int *array, size_t size)
  * swap - swaps items in array
  * @x: first item to swap
  * @y: item 2
+ * @array: array to be printed after swap
+ * @size: size of array
  */
 void swap(int *x, int *y, int *array, size_t size)
 {
-        int tmp = *x;
+	int tmp = *x;
 
-        *x = *y;
-        *y = tmp;
+	*x = *y;
+	*y = tmp;
 	print_array((const int *)array, size);
 }
 
@@ -33,6 +35,7 @@ void swap(int *x, int *y, int *array, size_t size)
  * @array: array to sort
  * @low: low bound
  * @high: high bound
+ * @size: size of array
  */
 void quick_sort_recursion(int *array, int low, int high, size_t size)
 {
@@ -51,6 +54,7 @@ void quick_sort_recursion(int *array, int low, int high, size_t size)
  * @array: array to partition
  * @low: low bound
  * @high: high bound
+ * @size: size of array
  *
  * Return: partition index
  */
