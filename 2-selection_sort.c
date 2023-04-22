@@ -10,6 +10,8 @@ void selection_sort(int *array, size_t size)
 {
 	size_t i, j, min;
 
+	if (array == NULL || size <= 0)
+		return;
 	for (i = 0; i < (size - 1); i++)
 	{
 		min = i;
@@ -31,8 +33,6 @@ void selection_sort(int *array, size_t size)
  * swap - swaps items in array
  * @x: first item to swap
  * @y: item 2
- * @array: array to be printed after swap
- * @size: size of array
  */
 void swap(int *x, int *y)
 {
