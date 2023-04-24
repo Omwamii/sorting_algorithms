@@ -9,8 +9,11 @@ void merge(int *array, int low, int mid, int high, int *tmp);
  */
 void merge_sort(int *array, size_t size)
 {
-	int *tmp = malloc(size * sizeof(int));
+	int *tmp;
 
+	if (array == NULL || size <= 0)
+		return;
+	tmp = malloc(size * sizeof(int));
 	if (tmp == NULL)
 		return;
 	merge_recursion(array, 0, size - 1, tmp);
