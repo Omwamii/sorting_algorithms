@@ -11,8 +11,10 @@ void radix_sort(int *array, size_t size)
 {
 	int max, pos;
 
+	if (array == NULL || size < 2)
+		return;
 	max = getmax(array, size);
-	for (pos = 1; max/pos > 0; pos *= 10)
+	for (pos = 1; max / pos > 0; pos *= 10)
 	{
 		countsort(array, size, pos);
 	}
@@ -67,13 +69,13 @@ void countsort(int *array, size_t size, int pos)
 	for (i = 0; i < k + 1; i++) /* set all values to 0 */
 		tmp1[i] = 0;
 	for (i = 0; i < (int)size; i++)
-		++tmp1[(array[i]/pos) % 10];
+		++tmp1[(array[i] / pos) % 10];
 	for (i = 1; i < k + 1; i++)
 		tmp1[i] = tmp1[i] + tmp1[i - 1];
 	for (i = (size - 1); i >= 0; i--) /* set tmp2 by real values from count */
 	{
 		tmp = array[i];
-		tmp2[--tmp1[(tmp/pos) % 10]] = tmp;
+		tmp2[--tmp1[(tmp / pos) % 10]] = tmp;
 	}
 	for (i = 0; i < (int)size; i++) /* copy values to main */
 		array[i] = tmp2[i];
