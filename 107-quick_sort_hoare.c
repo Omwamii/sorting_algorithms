@@ -5,7 +5,7 @@ void quick_sort_recursion(int *array, int low, int high, size_t size);
 int partition(int *array, int low, int high, size_t size);
 
 /**
- * void quick_sort_hoare(int *array, size_t size) - sorts array using hoare quicksort algo
+ * quick_sort_hoare - sorts array using hoare quicksort algo
  * @array: array to be sorted
  * @size: size of array
  */
@@ -29,26 +29,36 @@ void quick_sort_recursion(int *array, int low, int high, size_t size)
 		int pivot_index;
 
 		pivot_index = partition(array, low, high, size);
-		quick_sort_recursion(array, low, pivot_index - 1, size);
+		quick_sort_recursion(array, low, pivot_index, size);
 		quick_sort_recursion(array, pivot_index + 1, high, size);
 	}
 }
 
+/**
+ * partition - partitions array , sorting
+ * @array: array to be partitioned
+ * @low: low bound
+ * @high: high bound
+ * @size: size of original array
+ *
+ * Return: partition index
+ */
 int partition(int *array, int low, int high, size_t size)
 {
-	int pval = array[high], i = low, j = high;
+	int pval = array[high], i = low - 1, j = high + 1;
 
-	while (i < j)
+	while (1)
 	{
-		while (array[i] <= pval && i <= high)
+		do {
 			i++;
-		while (array[j] >= pval && j >= low)
+		} while (array[i] < pval);
+		do {
 			j--;
-		if (i < j)
-			swap(&array[i], &array[j], array, size);
+		} while (array[j] > pval);
+		if (i > j)
+			return (j);
+		swap(&array[i], &array[j], array, size);
 	}
-	swap(&array[high], &array[j], array, size);
-	return (j);
 }
 
 /**
