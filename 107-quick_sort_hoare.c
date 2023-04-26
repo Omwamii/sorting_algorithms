@@ -45,18 +45,20 @@ void quick_sort_recursion(int *array, int low, int high, size_t size)
  */
 int partition(int *array, int low, int high, size_t size)
 {
-	int pval = array[high], i = low - 1, j = high + 1;
+	int pval = array[high], i = low, j = high;
 
 	while (1)
 	{
-		do {
+		while (array[i] <= pval)
 			i++;
-		} while (array[i] < pval);
-		do {
+		while (array[j] > pval)
 			j--;
-		} while (array[j] > pval);
-		if (i > j)
+		if (i >= j)
+		{
+			if (j == high)
+				return (j - 1);
 			return (j);
+		}
 		swap(&array[i], &array[j], array, size);
 	}
 }
