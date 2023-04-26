@@ -23,12 +23,12 @@ void shell_sort(int *array, size_t size)
 	{
 		for (j = gap; j < size; j++)
 		{
+			swp = 1;
 			for (i = j - gap; i >= 0; i -= gap)
 			{
 				if (array[i + gap] > array[i]) /* no need to swap */
 					break;
 				swap(&array[i + gap], &array[i]);
-				swp = 1;
 			}
 		}
 		gap /= 3;
