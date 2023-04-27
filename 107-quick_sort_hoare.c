@@ -45,31 +45,32 @@ void quick_sort_recursion(int *array, int low, int high, size_t size)
  */
 int partition(int *array, int low, int high, size_t size)
 {
-	int pval = array[high], i = low, j = high;
+	int pval = array[high], i = low - 1, j = high + 1;
 
 	while (1)
 	{
-		while (array[i] <= pval)
-			i++;
-		while (array[j] > pval)
-			j--;
 		if (i > j)
+			break;
+		do {
+			i++;
+		} while (array[i] < pval);
+		do {
+			j--;
+		} while (array[j] > pval);
+
+		if (i < j)
 		{
-			if (j == high) /* value is at max, sorted */
-				return (j - 1);
-			return (j);
+			swap(&array[i], &array[j]);
+			print_array((const int *)array, size);
 		}
-		swap(&array[i], &array[j]);
-		print_array((const int *)array, size);
 	}
+	return (j);
 }
 
 /**
  * swap - swaps items in array
  * @x: first item to swap
  * @y: item 2
- * @array: array to be printed after swap
- * @size: size of array
  */
 void swap(int *x, int *y)
 {
