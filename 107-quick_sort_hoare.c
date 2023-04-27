@@ -1,6 +1,6 @@
 #include "sort.h"
 
-void swap(int *x, int *y, int *array, size_t size);
+void swap(int *x, int *y);
 void quick_sort_recursion(int *array, int low, int high, size_t size);
 int partition(int *array, int low, int high, size_t size);
 
@@ -53,13 +53,14 @@ int partition(int *array, int low, int high, size_t size)
 			i++;
 		while (array[j] > pval)
 			j--;
-		if (i >= j)
+		if (i > j)
 		{
-			if (j == high)
+			if (j == high) /* value is at max, sorted */
 				return (j - 1);
 			return (j);
 		}
-		swap(&array[i], &array[j], array, size);
+		swap(&array[i], &array[j]);
+		print_array((const int *)array, size);
 	}
 }
 
@@ -70,11 +71,11 @@ int partition(int *array, int low, int high, size_t size)
  * @array: array to be printed after swap
  * @size: size of array
  */
-void swap(int *x, int *y, int *array, size_t size)
+void swap(int *x, int *y)
 {
 	int tmp = *x;
 
 	*x = *y;
 	*y = tmp;
-	print_array((const int *)array, size);
+	/*print_array((const int *)array, size);*/
 }
